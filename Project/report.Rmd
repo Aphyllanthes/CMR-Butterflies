@@ -1,0 +1,141 @@
+---
+title: "Capture Mark Recapture on Butterflies in the Stelvio National Parc"
+author: "Nele Stackelberg"
+date: "4 9 2018"
+output: pdf_document
+bibliography: Lit.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  comment = "#>",
+  collapse = TRUE
+  )
+```
+
+## Introduction
+Capture mark recapture is a method to estimate the population size.
+
+@markBook : ‘encounter rate’) is the probability that
+given that the individual is alive and in the sample, that it is in fact encountered (e.g., seen). So ‘return rate’ = ‘survival rate’(fi) × ‘encounter rate’(p). It is difficult to compare return rates, since differences (or lack thereof) could reflect differences or similarities in the 2 underlying probabilities (survival rate, and encounter rate).
+
+Assumptions: 
+- marked individuals are representative of the population of interest and parameters estimated from the marked population can be inferred to the unmarked population;
+-  markers do not affect the behavior or fate of marked individuals;
+- marks are not lost or misread;
+- every marked animal alive in the population at time i has the same probability of capture;
+- the fate of each marked animal is independent of the fate of other marked animals; and
+- resampling is instantaneous; that is, birth, death, immigration and emigration do not occur during the resampling process (Lindberg and Rexstad 2002) [@Lindberg].
+
+Closed models are robust to violations of the closure
+assumption when movements are completely random; @Lindberg
+## Methods
+
+### Sampling
+<!-- Study design - Study area - The capturing and marking of the butterflies -->
+The sampling took place from August 21.-28. 2018 on a mountain meadow close to the bivacco valzeroten at $2200 m.a.s.$ which is situated in the Val Canè, Lombardy, Italy. The study site was chosen on the first day of capture because it is a homogeneous and undisturbed meadow. Furthermore it was obvious that the meadow is a habitat of butterflies, because at first sight many butterflies flew around.
+One sampling session was conducted by the three of us (Marvin, Elisa, Nele) every day. We catched the butterflies with two nets, while walking across the study site in a zigzag. Meanwhile two of us tried to catch every butterfly that was flying whithin range or was sitting in the gras. The latter was frequently the case in cloudy or even rainy weather. The third person would always mark the butterflies, note the details of the catch, such as the number and color of marker and take a picture of the butterfly. The picture was suitable to identify later recaptured butterflies, even if the marking was not clearly recognizable.The butterflies were marked by writing a consecutive number on their outer wing with a permanent marker. 
+The sampling was usualy started between half past ten and eleven o'clock, because this was the time when the butterflies started to fly. The duration of a session was about three hours, depending on how many butterflies were caught and marked. A second session on the same day was not possible because the butterflies decreasingly flew in the afternoon.
+
+### Data Analysis
+The information of the captures were written in a binary tablewhere the ones represent the captures or recaptures. Each column of this table represents one session, the rows represent the individuals. To model the population size we used the software *R* [@R] and the package *RMark* [@RMark], which is an interface to the software *MARK* [@MARK].
+
+With this software it is possible to run different models to estimate the population size. The models differ in their assumptions about the environment and ecology of the species studied as well as the possible influence of the one carrying out the study. The Program uses the method of maximum likelihood estimation to determine a probability of capture and recapture and then determine the population size from it. <!-- ?? richtig beschrieben -->
+First some "Closed Models" are run. The basic assumption of a closed model is the closure, which means that during the period of the study no birth, death, immigration or emigration should occur in the population [@White S.3].
+The Model $M_0$ is the simplest model, which models constant capture and recapture probabilities. The probabilities migth also be varying form session to session, which is implemented in the model $M_t$ and $M_T$. These models implement continuous (capital T) and factorial time (lowercase t) dependence of the capture probabilities. An improving ability to catch butterflies from session to session would promote, for example, the use of Model $M_T$.
+<!-- example for M_t -->
+behavioural response: Mb
+include the weather as factor: Mw
+<!-- Modell Mw, Mb beschreiben -->
+
+
+Assumtions are the closure (no birth, death, immigration or emigration during the period of the study), and the assumption that all individuals are equally catchable. (@White S.3)
+Even for open models, the geographical closeness is still an assumption
+
+Running some closed models
+Running some open models
+
+Comparison of the models
+
+Estimating the Population size and maybe the Population density
+
+## Results
+In total 402 individual butterflies were marked during the 8 days of capture. They were almost exclusively butterflies of the genus **Erebia**. A more precise determination at species level was not possible due to a lack of literature and the additional time which the determination would have taken. The few butterflies which were not of the genus **Erebia** were of the genus **Boloria** and one captured butterfly was identified as a **Aglais io** (european peacock).
+
+A quarter of the butterflies in Switzerland inhabit the altitudinal zone above 2000 m and it is spiecies of the genus **Erebia**, that develop at the highest altitudes [@TagfalterLebensraum]. Butterflies in the alpine altitudinal zone have no more than one generation per year. But there are more butterflies that have a two-year development period than in lower altitudes, which means that the caterpillars hibernate twice [@TagfalterLebensraum]. The only butterfly that hibernates in the alpine zone is **Aglais urticae** (Small tortoiseshell), which was also seen once but not captured during the study.
+
+During data acquistion we made 83 recaptures of 64 individuals, which means that some of them have also been recaptured several times.  
+<!-- plot mit anzahl der recaptures und farblich dargestellt von welchem Tag diese sind -->
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+## load data: ------------
+raw_data <- read.csv("Project/raw_data_8.csv")
+head(raw_data)
+pda <- raw_data %>% 
+  select(-id) %>% 
+  mutate(s1 = ifelse(s1 != 0, "s1", 0)) %>% 
+  mutate_all(funs(ifelse(s1 == "s1" & . != 0, "s1", .))) %>% 
+  mutate(s2 = ifelse(s2 %in% c(0, "s1"), s2, "s2")) %>% 
+  mutate_all(funs(ifelse(s2 == "s2" & . != 0, "s2", .))) %>% 
+  mutate(s3 = ifelse(s3 %in% c(0, "s1", "s2"), s3, "s3")) %>% 
+  mutate_all(funs(ifelse(s3 == "s3" & . != 0, "s3", .))) %>% 
+  mutate(s4 = ifelse(s4 %in% c(0, "s1", "s2", "s3"), s4, "s4")) %>% 
+  mutate_all(funs(ifelse(s4 == "s4" & . != 0, "s4", .))) %>% 
+  mutate(s5 = ifelse(s5 %in% c(0, "s1", "s2", "s3", "s4"), s5, "s5")) %>% 
+  mutate_all(funs(ifelse(s5 == "s5" & . != 0, "s5", .))) %>% 
+  mutate(s6 = ifelse(s6 %in% c(0, "s1", "s2", "s3", "s4", "s5"), s6, "s6")) %>% 
+  mutate_all(funs(ifelse(s6 == "s6" & . != 0, "s6", .)))%>% 
+  mutate(s7 = ifelse(s7 %in% c(0, "s1", "s2", "s3", "s4", "s5", "s6"), s7, "s7")) %>% 
+  mutate_all(funs(ifelse(s7 == "s7" & . != 0, "s7", .))) %>% 
+  mutate(s8 = ifelse(s8 %in% c(0, "s1", "s2", "s3", "s4", "s5", "s6", "s7"), s8, "s8")) %>% 
+  mutate_all(funs(ifelse(s8 == "s8" & . != 0, "s8", .)))
+lon_pda <- gather(pda) %>% 
+  filter(value != 0)
+
+ggplot(lon_pda) + 
+  geom_bar(aes(x= key, fill = value), stat = "count", na.rm = T) +
+  xlab("Session") + ylab("Amount of captures") + 
+  guides(fill=guide_legend(title="Session of first capture"))
+```
+
+
+Further it is assumed that the Butterflies do not lose their marks during the experiment and the marks are noted correctly at each sampling occasion (@White S. 7)
+
+## Discussion
+Which Erebia spiecies? In the Stelvio national parc 20 species: Erebia aethiops, Erebia albergana, Erebia cassioides, Erebia epiphron, Erebia eriphyle, Erebia euryale, Erebia ligea, Erebia manto, Erebia medusa, Erebia gorge, Erebia melampus, Erebia mnestra, Erebia montana, Erebia pandrose, Erebia styx, Erebia pharte, Erebia triaria, Erebia pluto, Erebia pronoe, Erebia tyndarus (@Bonifacino). 
+
+There is a dilemma regarding the second assumption, since the size of the mark must not affect the butterfly: Butterflies marked with the thick white marker could often be recognized without being taken out of the net by hand, which was always a danger to injure the butterfly. (weiteres Vergleichen mit @Morton. @Morton couldn't show any significant differences between color or size of marks on the butterflies. They might only be affected by the capture...)
+
+Effect of Sex on recapture probability could not be investigated... 
+
+Whats is the value of knowing the population size of a genus? Whithout knowing the species, such a study is without clear statement.
+@Lindberg: Therefore, at minimum and when possible, CMR designs
+should include information on gender and age of marked
+individuals. Observer or encounter characteristics, for example experience
+level, handling time for marking, and length of the
+encounter occasion, may also cause assumption (3–6)
+violations and should be recorded.
+
+Discussing if the population was open or closed
+
+
+
+<!-- ## To do: -->
+<!-- - read mark book: for methods -->
+<!-- - read white et al: for methods -->
+<!-- - programm a few more models -->
+<!--     - partly open model (4 and 4 days of closure, open in between?) -->
+<!-- - read lindberg for discussion -->
+<!-- - read butterflies articles for introduction and discussion -->
+
+<!-- ## questions: -->
+<!-- - where in the report should I write the assumptions of CMR, the method and of the models? -->
+<!-- - what does the "share = T" mean? -->
+<!-- - why is the mtb model weird? -->
+
+## References
+
