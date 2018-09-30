@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
   collapse = TRUE
   )
 ```
-
+<!-- Titelbild mit kollage mit vielen Schmetterlingen und markierung -->
 ## Introduction
 Capture mark recapture is a method to estimate the population size.
 
@@ -30,31 +30,30 @@ Assumptions:
 
 Closed models are robust to violations of the closure
 assumption when movements are completely random; @Lindberg
+
 ## Methods
 
 ### Sampling
 <!-- Study design - Study area - The capturing and marking of the butterflies -->
 The sampling took place from August 21.-28. 2018 on a mountain meadow close to the bivacco valzeroten at $2200 m.a.s.$ which is situated in the Val Canè, Lombardy, Italy. The study site was chosen on the first day of capture because it is a homogeneous and undisturbed meadow. Furthermore it was obvious that the meadow is a habitat of butterflies, because at first sight many butterflies flew around.
-One sampling session was conducted by the three of us (Marvin, Elisa, Nele) every day. We catched the butterflies with two nets, while walking across the study site in a zigzag. Meanwhile two of us tried to catch every butterfly that was flying whithin range or was sitting in the gras. The latter was frequently the case in cloudy or even rainy weather. The third person would always mark the butterflies, note the details of the catch, such as the number and color of marker and take a picture of the butterfly. The picture was suitable to identify later recaptured butterflies, even if the marking was not clearly recognizable.The butterflies were marked by writing a consecutive number on their outer wing with a permanent marker. 
+One sampling session was conducted by the three of us (Marvin, Elisa, Nele) every day. We catched the butterflies with two nets, while walking across the study site in a zigzag. Meanwhile two of us tried to catch every butterfly that was flying whithin range or was sitting in the gras. The latter was frequently the case in cloudy or even rainy weather. The third person would always mark the butterflies, note the details of the catch, such as the number and color of marker and take a picture of the butterfly. The picture was suitable to identify later recaptured butterflies, even if the marking was not clearly recognizable.The butterflies were marked by writing a consecutive number on their outer wing with a permanent marker. The permanent marker was used in the expectation that the Butterflies do not lose their marks during the experiment. Together with the fact that the marks are noted correctly at each sampling occasion this is an important assumption of the CMR-Method [@White S. 7].
 The sampling was usualy started between half past ten and eleven o'clock, because this was the time when the butterflies started to fly. The duration of a session was about three hours, depending on how many butterflies were caught and marked. A second session on the same day was not possible because the butterflies decreasingly flew in the afternoon.
 
 ### Data Analysis
-The information of the captures were written in a binary tablewhere the ones represent the captures or recaptures. Each column of this table represents one session, the rows represent the individuals. To model the population size we used the software *R* [@R] and the package *RMark* [@RMark], which is an interface to the software *MARK* [@MARK].
+The information of the captures were written in a binary table where the ones represent the captures or recaptures. Each column of this table represents one session, the rows represent the individuals. To model the population size we used the software *R* [@R] and the package *RMark* [@RMark], which is an interface to the software *MARK* [@MARK].
 
 With this software it is possible to run different models to estimate the population size. The models differ in their assumptions about the environment and ecology of the species studied as well as the possible influence of the one carrying out the study. The Program uses the method of maximum likelihood estimation to determine a probability of capture and recapture and then determine the population size from it. <!-- ?? richtig beschrieben -->
 First some "Closed Models" are run. The basic assumption of a closed model is the closure, which means that during the period of the study no birth, death, immigration or emigration should occur in the population [@White S.3].
-The Model $M_0$ is the simplest model, which models constant capture and recapture probabilities. The probabilities migth also be varying form session to session, which is implemented in the model $M_t$ and $M_T$. These models implement continuous (capital T) and factorial time (lowercase t) dependence of the capture probabilities. An improving ability to catch butterflies from session to session would promote, for example, the use of Model $M_T$.
+The Model $M_0$ is the simplest model, which models constant capture and recapture probabilities. The probabilities migth also be varying form session to session, which is implemented in the model $M_t$ and $M_T$. These models implement continuous (capital T) and factorial (lowercase t) time dependence of the capture probabilities. An improving ability to catch butterflies from session to session would promote, for example, the use of Model $M_T$. The variation of the probabilities with the different sessions might also depend on the weather. Therefore the model $M_w$ is calcultated with the weather as predictor. The variable weather was subjectively recorded with a value between 0 and 1 after each session. The value 1 means continuous sunshine and the value 0 continuous cloudy. No sampling was done during rain. Another possible source to variation of the detection probabilities is trap-shiness or trap-happieness. This behavioral response is part of the model $M_b$, which calculates capture probabilities that are either greater or less than recapture probabilities. 
+In the following these models ($M_t$, $M_T$, $M_w$, $M_b$) are compared and Models that combine the factors are run. 
+Models dealing with individual heterogeneity will not be considered as no differences between individuals are recorded.
 <!-- example for M_t -->
-behavioural response: Mb
-include the weather as factor: Mw
 <!-- Modell Mw, Mb beschreiben -->
 
-
-Assumtions are the closure (no birth, death, immigration or emigration during the period of the study), and the assumption that all individuals are equally catchable. (@White S.3)
+ and the assumption that all individuals are equally catchable. (@White S.3)
 Even for open models, the geographical closeness is still an assumption
 
-Running some closed models
-Running some open models
+Running some open models: POPAN and Pradlambda
 
 Comparison of the models
 
@@ -65,16 +64,17 @@ In total 402 individual butterflies were marked during the 8 days of capture. Th
 
 A quarter of the butterflies in Switzerland inhabit the altitudinal zone above 2000 m and it is spiecies of the genus **Erebia**, that develop at the highest altitudes [@TagfalterLebensraum]. Butterflies in the alpine altitudinal zone have no more than one generation per year. But there are more butterflies that have a two-year development period than in lower altitudes, which means that the caterpillars hibernate twice [@TagfalterLebensraum]. The only butterfly that hibernates in the alpine zone is **Aglais urticae** (Small tortoiseshell), which was also seen once but not captured during the study.
 
-During data acquistion we made 83 recaptures of 64 individuals, which means that some of them have also been recaptured several times.  
+During data acquistion we made 83 recaptures of 64 individuals, which means that some of them have also been recaptured several times. Recapture rates were low at the beginning and reached rates of above 10 % up from the fifth session. The amount of captures and recaptures of the sessions is represented in figure \ref{captures}. Of every session butterflies were recaptured througout the following sessions (see figure \ref{recaptures}). Butterflies marked on the first day were recaptured on every following session except for the second session.
+
 <!-- plot mit anzahl der recaptures und farblich dargestellt von welchem Tag diese sind -->
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.cap="The amount of captured and recaptured butterflies of every session (s1 to s8). The sessions took place on consecutive days between August 21 and August 28 2018. \\label{captures}", fig.height=3}
 library(dplyr)
 library(tidyr)
+library(RMark)
 library(ggplot2)
 
 ## load data: ------------
-raw_data <- read.csv("Project/raw_data_8.csv")
-head(raw_data)
+raw_data <- read.csv("../Project/raw_data_8.csv")
 pda <- raw_data %>% 
   select(-id) %>% 
   mutate(s1 = ifelse(s1 != 0, "s1", 0)) %>% 
@@ -95,22 +95,174 @@ pda <- raw_data %>%
   mutate_all(funs(ifelse(s8 == "s8" & . != 0, "s8", .)))
 lon_pda <- gather(pda) %>% 
   filter(value != 0)
+recaptures <- filter(lon_pda, key != value)
 
-ggplot(lon_pda) + 
-  geom_bar(aes(x= key, fill = value), stat = "count", na.rm = T) +
-  xlab("Session") + ylab("Amount of captures") + 
-  guides(fill=guide_legend(title="Session of first capture"))
+lon <- lon_pda %>% 
+  mutate(type = ifelse(key != value, "recapture", "caputure"))
+ggplot(lon) + 
+  geom_bar(aes(x= key, fill = type), stat = "count", na.rm = T, 
+           position = position_stack(reverse = TRUE)) +
+  xlab("Session") + ylab("Amount of captures") + theme_bw()
+
 ```
 
 
-Further it is assumed that the Butterflies do not lose their marks during the experiment and the marks are noted correctly at each sampling occasion (@White S. 7)
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.cap="The amount of recaptured butterflies on each session is represented by the bars in this plot and the color shows on which session they had been first captured. On the second session (s2) no butterflies had been recaptured. Logically, recaptures are only possible from the second session onwards. \\label{recaptures}", fig.height = 3}
+ggplot(recaptures) + 
+  geom_bar(aes(x= key, fill = value), stat = "count", na.rm = T) +
+  xlab("Session") + ylab("Amount of recaptures") + 
+  guides(fill=guide_legend(title="First captured")) + theme_bw()
+```
+
+The results of the simple Closed models are shown in table \ref{closed}.  The model Mw describes best the data (lowest AICc) and estimates a population-size of 1600 individuals. 
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+## wragle data: ------------
+raw_data_2 <- raw_data %>% 
+  mutate_at(
+    vars(grep("s",colnames(.))), 
+    .funs = funs(ifelse(. >1, 1, .))
+  ) %>% 
+  mutate(ch = paste0(!!!.[,grep("s",colnames(.))]))
+
+inp_data <- raw_data_2 %>% 
+  select(ch) %>% 
+  mutate(freq = 1)
+
+source("../Project/model_function.R")
+#1 Closed models ###############
+
+#1.1 only intercept
+m0_result <- Closed_model(
+  model.parameters = list(p = list(formula = ~1, share = TRUE)),
+  inp_data = inp_data, name = "m0"
+)
+res <- list()
+res$m0 <- m0_result$results$derived$`N Population Size`
+res$m0$AICc <- m0_result$results$AICc
+
+##1.2 model mt: The session number is a factorial number
+mt_result <- Closed_model(
+  model.parameters = list(p = list(formula = ~1 + time, share = TRUE)),
+  inp_data = inp_data, name = "mt"
+)
+res$mt <- mt_result$results$derived$`N Population Size`
+res$mt$AICc <- mt_result$results$AICc
+
+## 1.3 model mT: the session number is continuous number
+mT_result <- Closed_model(
+  model.parameters = list(p = list(formula = ~1 + Time, share = TRUE)),
+  inp_data = inp_data, name = "mT"
+)
+res$mT <- mT_result$results$derived$`N Population Size`
+res$mT$AICc <- mT_result$results$AICc
+
+## 1.4 model mb: behavioral response
+mb_result <- Closed_model(
+  model.parameters = list(p = list(formula = ~1 + c, share = T)),
+  inp_data = inp_data, name = "mb"
+)
+res$mb <- mb_result$results$derived$`N Population Size`
+res$mb$AICc <- mb_result$results$AICc
+
+## 1.5 model with weather
+mw_result <- Closed_model(
+  model.parameters = list(p = list(formula = ~1 + predictor, share = TRUE)),
+  inp_data = inp_data, name = "mw",
+  predictor = c(0.5, .3, .2, .8, .4, .9, 1, 1)
+)
+res$mw <- mw_result$results$derived$`N Population Size`
+res$mw$AICc <- mw_result$results$AICc
+
+restab <- data.frame(matrix(unlist(res), nrow=length(res), byrow=T))
+names(restab) <- names(res$m0)
+restab$model <- names(res)
+restab <- select(restab, model, AICc, estimate, lcl, ucl) %>% 
+  arrange(AICc)
+knitr::kable(restab, caption = "The results of the simple Closed models M0 (constant detection probabilities), Mt (factorial time-dependence), MT (continuous time-dependence), Mb (behavioural response) and Mw (weather-dependence). The table contains the AICc to evaluate the models, the estimate of the population size and the lower (lcI) and upper (ucI) confidence intervals. \\label{closed}") 
+```
+
+Open models...
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+## Popan modell
+inp_data_process1 <- process.data(inp_data, model = "POPAN")
+inp_design1 <- RMark::make.design.data(inp_data_process1)
+
+# inp_design1$p$predictor <- predictor
+# inp_design1$c$predictor <- predictor[2:length(predictor)]
+
+model.parameters = list(p = list(formula=~1 ),
+                        Phi = list(formula=~1 ), 
+                        pent = list(formula=~1 ))
+mPOPAN <- RMark::mark(data = inp_data_process1, 
+                  ddl = inp_design1, 
+                  model = "POPAN",
+                  model.parameters = model.parameters, output = F
+)
+openres <- list()
+openres$mPOPAN <- mPOPAN$results$derived$`Gross N* Population Size`
+## 
+model.parameters = list(p = list(formula=~1 ),
+                        Phi = list(formula=~1 , fixed=1), 
+                        pent = list(formula=~1, fixed=0 ))
+mPOPAN2 <- RMark::mark(data = inp_data_process1, 
+                      ddl = inp_design1, 
+                      model = "POPAN",
+                      model.parameters = model.parameters, output = F
+)
+openres$mPOPAN2 <- mPOPAN2$results$derived$`Gross N* Population Size`
+
+## open with time
+model.parameters = list(p = list(formula=~1 + time ),
+                        Phi = list(formula=~1), #probability of survival
+                        pent = list(formula=~1)) # probability of entrance
+mPOPANt <- RMark::mark(data = inp_data_process1, 
+                       ddl = inp_design1, 
+                       model = "POPAN",
+                       model.parameters = model.parameters, output = F
+)
+openres$mPOPANt <- mPOPANt$results$derived$`Gross N* Population Size`
+
+## mPopan weather
+inp_design1$p$weather <- c(0.5, .3, .2, .8, .4, .9, 1, 1)
+inp_design1$c$weather <- c( .3, .2, .8, .4, .9, 1, 1)
+
+model.parameters = list(p = list(formula=~1 + weather),
+                        Phi = list(formula=~1), #probability of survival
+                        pent = list(formula=~1)) # probability of entrance
+mPOPANw <- RMark::mark(data = inp_data_process1, 
+                       ddl = inp_design1, 
+                       model = "POPAN",
+                       model.parameters = model.parameters, output = F
+)
+openres$mPOPANw <- mPOPANw$results$derived$`Gross N* Population Size`
+
+opentab <- data.frame(matrix(unlist(openres), nrow=length(openres), byrow=T))
+names(opentab) <- names(openres$mPOPAN)
+opentab$model <- names(openres)
+
+#pradlamda
+inp_data_process1 <- process.data(inp_data, model = "Pradlambda")
+inp_design1 <- RMark::make.design.data(inp_data_process1)
+
+model.parameters = list(p = list(formula=~1),
+                        Phi = list(formula=~1), #probability of survival
+                        Lambda = list(formula=~1)) # probability of entrance
+mPradLambda <- RMark::mark(data = inp_data_process1, 
+                       ddl = inp_design1, 
+                       model = "Pradlambda",
+                       model.parameters = model.parameters, output = F
+)
+
+```
+
 
 ## Discussion
 Which Erebia spiecies? In the Stelvio national parc 20 species: Erebia aethiops, Erebia albergana, Erebia cassioides, Erebia epiphron, Erebia eriphyle, Erebia euryale, Erebia ligea, Erebia manto, Erebia medusa, Erebia gorge, Erebia melampus, Erebia mnestra, Erebia montana, Erebia pandrose, Erebia styx, Erebia pharte, Erebia triaria, Erebia pluto, Erebia pronoe, Erebia tyndarus (@Bonifacino). 
 
 There is a dilemma regarding the second assumption, since the size of the mark must not affect the butterfly: Butterflies marked with the thick white marker could often be recognized without being taken out of the net by hand, which was always a danger to injure the butterfly. (weiteres Vergleichen mit @Morton. @Morton couldn't show any significant differences between color or size of marks on the butterflies. They might only be affected by the capture...)
 
-Effect of Sex on recapture probability could not be investigated... 
+Effect of Sex on recapture probability could not be investigated... other individual differences?
 
 Whats is the value of knowing the population size of a genus? Whithout knowing the species, such a study is without clear statement.
 @Lindberg: Therefore, at minimum and when possible, CMR designs
