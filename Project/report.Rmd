@@ -1,6 +1,6 @@
 ---
 title: "Capture Mark Recapture on Butterflies in the Stelvio National Parc"
-author: "Nele Stackelberg \n  Matrikelnummer: 3548205   \n -  \n Report of the TAOE-course, Msc. Environmental sciences  (... words)  \n Lecturers: Severin Hauenstein and Luca Colatti"
+author: "Nele Stackelberg \n  Matrikelnummer: 3548205   \n -  \n Report of the TAOE-course, Msc. Environmental sciences  \n Lecturers: Severin Hauenstein and Luca Colatti"
 date: "Freiburg, 8 10 2018"
 output: 
   pdf_document:
@@ -9,7 +9,7 @@ output:
 documentclass: article
 classoption: titlepage
 header-includes: 
-  - \usepackage[german]{babel}
+  - \usepackage[english]{babel}
   - \usepackage{titling}
   - \usepackage[export]{adjustbox}
   - \usepackage{placeins}
@@ -33,12 +33,16 @@ knitr::opts_chunk$set(
 ```
 <!-- Titelbild mit kollage mit vielen Schmetterlingen und markierung -->
 # Introduction
-Capture mark recapture is a method to estimate the population size.
+From the dynamics of the population of large mammals to that of protozoa, all are part of ecosystem processes. As these processes have an impact on our environment, they are of ecological interest. The response of population dynamics to the climate change strengthens the interest additionally [@climateEcol]. Knowing the size of a population is essential because it tells about the status of a species and is thus important to guide an effective conservation and management.
 
-In the mountains, the assessment of wildlife populations is a challenge, as mountains are generally a heterogeneous landscape and in some places hardly accessible. 
+ <!-- ecosystem processes, that have an impact on the natural environment, but might also influence the human environment such as agricultural sites. -->
 
-@MARK : ‘encounter rate’) is the probability that
-given that the individual is alive and in the sample, that it is in fact encountered (e.g., seen). So ‘return rate’ = ‘survival rate’(fi) × ‘encounter rate’(p). It is difficult to compare return rates, since differences (or lack thereof) could reflect differences or similarities in the 2 underlying probabilities (survival rate, and encounter rate).
+A common method to estimate population size is the capture mark recapture (CMR) analysis, also known as capture release recapture (CRR). Alternatively the abundance of species as an index of population dynamics can be determined by modified Pollard transects (MPT) and distance sampling [@Turlure]. Compared to CMR, MPT is less time-consuming an has less negative impact on individuals. The disadvandage of MPT, however, is that the population size cannot be estimated because the fraction of the unseen population that cannot be determined [@Turlure]. While the results of distance sampling correlate with those of the MPT-method, it was proposed by @shuey not to use them to estimate population size even after calibration with CMR data. 
+
+For various purposes different model types have been developed... open and closed models ... to cover various assumptions 
+capwire...
+POPAN or Pradlambda: "Capture-recapture models oriented to estimation of survival rates are the result of a
+recent change in emphasis from earlier approaches in which population size" @Lebreton
 
 Assumptions: 
 - marked individuals are representative of the population of interest and parameters estimated from the marked population can be inferred to the unmarked population;
@@ -51,11 +55,23 @@ Assumptions:
 Closed models are robust to violations of the closure
 assumption when movements are completely random; @Lindberg
 
+In the mountains, the assessment of wildlife populations is a challenge, as mountains are generally a heterogeneous landscape and in some places hardly accessible. 
+
+In dieser Studie wird der Aufwand und Aussagekraft von CMR an Schmetterlingen untersucht.
+Different models, closed and open models as well as a capwire model.
+
+<!-- @MARK : ‘encounter rate’) is the probability that -->
+<!-- given that the individual is alive and in the sample, that it is in fact encountered (e.g., seen). So ‘return rate’ = ‘survival rate’(fi) × ‘encounter rate’(p). It is difficult to compare return rates, since differences (or lack thereof) could reflect differences or similarities in the 2 underlying probabilities (survival rate, and encounter rate). -->
+
+
 # Methods
 
 ## Sampling
 <!-- Study design - Study area - The capturing and marking of the butterflies -->
-The sampling took place from August 21.-28. 2018 on a mountain meadow close to the bivacco valzeroten at $2200 m.a.s.$ which is situated in the Val Canè, Lombardy, Italy. The study site was chosen on the first day of capture because it is a homogeneous and undisturbed meadow. Furthermore it was obvious that the meadow is a habitat of butterflies, because at first sight many butterflies flew around.
+The sampling took place from August 21.-28. 2018 on a mountain meadow close to the bivacco valzeroten at $2200 m.a.s.$ which is situated in the Val Canè, Lombardy, Italy (see \ref{area}). The study site was chosen on the first day of capture because it is a homogeneous and undisturbed meadow. Furthermore it was obvious that the meadow is a habitat of butterflies, because at first sight many butterflies flew around.
+
+![The study site in the Val Canè, which is part of the Stelvio National Park. The Area of thes study site is about 3ha, it is exposed to South-West an at 2200 m.a.s of altitude. \label{area}](../Project/area.pdf)
+
 One sampling session was conducted by the three of us (Marvin, Elisa, Nele) every day. We catched the butterflies with two nets, while walking across the study site in a zigzag. Meanwhile two of us tried to catch every butterfly that was flying within range or was sitting in the grass. The latter was frequently the case in cloudy or even rainy weather. The third person would always mark the butterflies, note the details of the catch, such as the number and color of marker and take a picture of the butterfly. The picture was suitable to identify later recaptured butterflies, even if the marking was not clearly recognizable.The butterflies were marked by writing a consecutive number on their outer wing with a permanent marker. The permanent marker was used in the expectation that the Butterflies do not lose their marks during the experiment. Together with the fact that the marks are noted correctly at each sampling occasion this is an important assumption of the CMR-Method [@White S. 7].
 The sampling was usually started between half past ten and eleven o'clock, because this was the time when the butterflies started to fly. The duration of a session was about three hours, depending on how many butterflies were caught and marked. A second session on the same day was not possible because the butterflies decreasingly flew in the afternoon.
 
@@ -70,8 +86,12 @@ Models dealing with individual heterogeneity will not be considered as no differ
 <!-- example for M_t -->
 <!-- Modell Mw, Mb beschreiben -->
 
-Since we don't have any information about movements or death or birth during the study period, the assumption of a closed population cannot be confirmed in this experiment. Therefore some open population models are also run, where model types as $M_0$ and $M_t$ can also be implemented. To estimate the super-population as well as the population size that is on the patch on every session, the first open model to run is the POPAN model, which is a modified parameterizantion of the Jolly-Seber model. This model not only estimates the population size, but also the migration or death and immigration or birth for every session. Additional parameters of these models are the survival probability (where emigration is included because it is indistinguishable) and the probability that an animal would enter the population (where birth is included) from one session to the next. 
-To further analyse the population dynamics, a second open model, the Pradel-Lambda-model (PradLambda) is run. This model does not only give information about the population size, but how many individuals are new to the population on each session and how many had disappeared. It models the rate of population growth $\lambda$. Compared to the POPAN model it is conditional upon animals been seen during the study.
+Since we don't have any information about movements or death or birth during the study period, the assumption of a closed population cannot be confirmed in this experiment. Therefore some open population models are also run, where model types as $M_0$ and $M_t$ can also be implemented. To estimate the super-population (all animals that ever entered the study site) as well as the population size that is on the patch on every session, the first open model to run is the POPAN model. The POPAN model is a modified parameterizantion of the Jolly-Seber model. This model not only estimates the population size, but also the migration or death and immigration or birth for every session. Additional parameters of these models are the survival probability $\Phi$ (where emigration is included because it is indistinguishable) and the probability that an animal would enter the population  $pent$ (where birth is included) from one session to the next. 
+The first open model that is calculated, "Popan_M_0" is a Popan-model of type $M_0$, where all three parameters, $p$, $\Phi$ and $pent$ are constant. 
+The Popan model makes it possible to test the assumption of the open population by modelling a fixed survival probability of $1$ and a fixed probability of entrance of $0$. In this way the population without birth or death (respectively imigration or emigration) is simulated, and the model can be compared to "real" open models via the AICc. This is the second model "Popan_phi+pent_fixed" with $pent = 0$ (no entrance or birth) and $\Phi = 1$ (all individuals survive) which is calculated.
+Furthermore the open models "Popan_p_time-dependent", "Popan_p+phi_time-dependent" and "Popan_p+phi+pent_time-dependent" are calculated where either the capture probability is time dependent or the two other parameters are also time dependent.
+
+To further analyse the population dynamics, a second open model, the Pradel-Lambda-model (PradLambda) is run. This model does not estimates the population size, but the rate of population growth $\lambda$. Compared to the POPAN model it is conditional upon animals been seen during the study.
 
  <!-- where we can also see the additions and subtractions of the population from session to session.  -->
 Both of these open models are based on the assumption that marked and unmarked individuals are equally catchable [@MARK]. And even for open models, the geographical closeness is still an assumption  [@White S.3].
@@ -141,7 +161,7 @@ ggplot(recaptures) +
   guides(fill=guide_legend(title="First captured")) + theme_bw()
 ```
 
-The results of the simple Closed models are shown in table \ref{closed}.  The model Mw describes best the data (lowest AICc) and estimates a population-size of 1600 individuals. 
+The results of the simple Closed models are shown in table \ref{closed}.  The model $M_w$ describes best the data (lowest AICc) and estimates a population-size of 1600 individuals. 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 ## wragle data: ------------
 raw_data_2 <- raw_data %>% 
@@ -205,11 +225,10 @@ names(restab) <- names(res$m0)
 restab$model <- names(res)
 restab <- select(restab, model, AICc, estimate, lcl, ucl) %>% 
   arrange(AICc)
-knitr::kable(restab, caption = "The results of the simple Closed models M0 (constant detection probabilities), Mt (factorial time-dependence), MT (continuous time-dependence), Mb (behavioural response) and Mw (weather-dependence). The table contains the AICc to evaluate the models, the estimate of the population size and the lower (lcI) and upper (ucI) confidence intervals. \\label{closed}") 
+kableExtra::kable(restab, 'latex', booktabs =T,
+             caption = "The results of the simple Closed models M0 (constant detection probabilities), Mt (factorial time-dependence), MT (continuous time-dependence), Mb (behavioural response) and Mw (weather-dependence). The table contains the AICc to evaluate the models, the estimate of the population size and the lower (lcI) and upper (ucI) confidence intervals. \\label{closed}") %>%
+  kableExtra::kable_styling(latex_options = "striped")
 ```
-
-Open models...
-The POPAN model that fits best is the time-dependent model...
 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
@@ -232,16 +251,19 @@ openres <- list()
 openres$mPOPAN <- mPOPAN$results$derived$`Gross N* Population Size`
 openres$mPOPAN$AICc <- mPOPAN$results$AICc
 ## 
+#The second is fixed which allows real parameters to be set at fixed values. 
+# fixed survival probability
 model.parameters = list(p = list(formula=~1 ),
-                        Phi = list(formula=~1 , fixed=1), 
-                        pent = list(formula=~1, fixed=0 ))
-mPOPAN2 <- RMark::mark(data = inp_data_process1, 
+                        Phi = list(formula=~1 , fixed=1), # survival probability
+                        pent = list(formula=~1, fixed=0 )) # probability of entrance
+mPOPANclosed <- RMark::mark(data = inp_data_process1, 
                       ddl = inp_design1, 
                       model = "POPAN",
                       model.parameters = model.parameters, output = F
 )
-openres$mPOPAN2 <- mPOPAN2$results$derived$`Gross N* Population Size`
-openres$mPOPAN2$AICc <- mPOPAN2$results$AICc
+openres$mPOPANclosed <- mPOPANclosed$results$derived$`Gross N* Population Size`
+openres$mPOPANclosed$AICc <- mPOPANclosed$results$AICc
+
 ## open with time
 model.parameters = list(p = list(formula=~1 + time ),
                         Phi = list(formula=~1), #probability of survival
@@ -254,16 +276,33 @@ mPOPANt <- RMark::mark(data = inp_data_process1,
 openres$mPOPANt <- mPOPANt$results$derived$`Gross N* Population Size`
 openres$mPOPANt$AICc <- mPOPANt$results$AICc
 
-par(mfrow = c(1,2))
-boxplot(
-  t(mPOPAN$results$derived$`N Population Size`), 
-  main = "Popan-model M_0", xlab = "Session", ylab = "N Population Size"
+model.parameters = list(p = list(formula=~1 + time ),
+                        Phi = list(formula=~1 + time), #probability of survival
+                        pent = list(formula=~1)) # probability of entrance
+mPOPANtt <- RMark::mark(data = inp_data_process1, 
+                       ddl = inp_design1, 
+                       model = "POPAN",
+                       model.parameters = model.parameters, output = F
 )
-boxplot(
-  t(mPOPANt$results$derived$`N Population Size`), 
-  main = "Popan-model M_t", xlab = "Session", ylab = "N Population Size"
+openres$mPOPANtt <- mPOPANtt$results$derived$`Gross N* Population Size`
+openres$mPOPANtt$AICc <- mPOPANtt$results$AICc
+
+model.parameters = list(p = list(formula=~1 + time ),
+                        Phi = list(formula=~1 + time), #probability of survival
+                        pent = list(formula=~1 + time)) # probability of entrance
+mPOPANttt <- RMark::mark(data = inp_data_process1, 
+                       ddl = inp_design1, 
+                       model = "POPAN",
+                       model.parameters = model.parameters, output = F
 )
-par(mfrow = c(1,1))
+openres$mPOPANttt <- mPOPANttt$results$derived$`Gross N* Population Size`
+openres$mPOPANttt$AICc <- mPOPANttt$results$AICc
+```
+
+The test for closeness of the population shows that the Population is open as the Popan-model that simulates the closed population, "Popan_phi+pent_fixed",  has the highest AICc value (`r mPOPANclosed$results$AICc`). The Popan-$M_0$ model, "Popan_M_0", has an AICc of `r mPOPAN$results$AICc` and the Model, "Popan_p_time-dependent", where the capture probability is time dependent and the two other parameters are constant has an AICc of `r mPOPANt$results$AICc`, which is the lowest value and therefore considered as the model that estimates best the population size. The models where either the survival probability or the probability of entrance are also time-dependent doesn't fit as good. 
+<!-- This is reasonable as the two parameters are constant ecologically -->
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height = 3}
 # ## mPopan weather ## mLogit link (?markBook S. 483)
 # inp_design1$p$weather <- c(0.5, .3, .2, .8, .4, .9, 1, 1)
 # inp_design1$c$weather <- c( .3, .2, .8, .4, .9, 1, 1)
@@ -282,34 +321,93 @@ opentab <- data.frame(matrix(unlist(openres), nrow=length(openres), byrow=T))
 names(opentab) <- names(openres$mPOPAN)
 opentab$model <- names(openres)
 
+lontab <- tidyr::gather(opentab, key, superpopulation_size, -AICc, -model)
+ggplot(lontab, aes(model, superpopulation_size)) + 
+  geom_boxplot(aes(fill = AICc)) + theme_bw()
 ```
 
-The PradLambda model shows: 
 
-```{r}
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height = 3}
+Popsize <- list()
+Popsize$mPOPAN <- mPOPAN$results$derived$`N Population Size`
+Popsize$mPOPAN$model <- "mPOPAN"
+Popsize$mPOPANt <- mPOPANt$results$derived$`N Population Size`
+Popsize$mPOPANt$model <- "mPOPANt"
+
+poptab <- Popsize$mPOPANt
+poptab$session <- as.character(1:8)
+poptab1 <- tidyr::gather(poptab, key, Population_size, -model, -session)
+
+ggplot(poptab1, aes(x=session, y=Population_size)) + 
+  geom_boxplot() +
+  theme_bw()
+```
+
+
+<!-- The PradLambda model estimates the population growth.  -->
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 #pradlamda
-inp_data_process1 <- process.data(inp_data, model = "Pradlambda")
+# inp_data_process1 <- process.data(inp_data, model = "Pradlambda")
+# inp_design1 <- RMark::make.design.data(inp_data_process1)
+# 
+# model.parameters = list(p = list(formula=~1),
+#                         Phi = list(formula=~1), #probability of survival
+#                         Lambda = list(formula=~1)) # probability of entrance
+# mPradLambda <- RMark::mark(data = inp_data_process1, 
+#                        ddl = inp_design1, 
+#                        model = "Pradlambda",
+#                        model.parameters = model.parameters, output = F
+# )
+# 
+# model.parameters = list(p = list(formula=~1 + time),
+#                         Phi = list(formula=~1), #probability of survival
+#                         Lambda = list(formula=~1)) # rate of population growth
+# mPradLambda_t <- RMark::mark(data = inp_data_process1, 
+#                        ddl = inp_design1, 
+#                        model = "Pradlambda",
+#                        model.parameters = model.parameters, output = F
+# )
+# mPradLambda$results
+```
+
+```{r combidata, echo=FALSE, message=FALSE, warning=FALSE}
+combidata <- raw_data %>% 
+  transmute(id = id, 
+            s1 = s1 + s2,
+            s2 = s3 + s4,
+            s3 = s5 + s6 + s7 + s8) %>% 
+  mutate_at(
+    vars(grep("s",colnames(.))), 
+    .funs = funs(ifelse(. >1, 1, .))
+  ) %>% 
+  mutate(ch = paste0(!!!.[,grep("s",colnames(.))])) %>% 
+  select(ch) %>% 
+  mutate(freq = 1)
+
+inp_data_process1 <- process.data(combidata, model = "POPAN")
 inp_design1 <- RMark::make.design.data(inp_data_process1)
 
-model.parameters = list(p = list(formula=~1),
-                        Phi = list(formula=~1), #probability of survival
-                        Lambda = list(formula=~1)) # probability of entrance
-mPradLambda <- RMark::mark(data = inp_data_process1, 
-                       ddl = inp_design1, 
-                       model = "Pradlambda",
-                       model.parameters = model.parameters, output = F
-)
+# inp_design1$p$predictor <- predictor
+# inp_design1$c$predictor <- predictor[2:length(predictor)]
 
-model.parameters = list(p = list(formula=~1 + time),
-                        Phi = list(formula=~1), #probability of survival
-                        Lambda = list(formula=~1)) # probability of entrance
-mPradLambda_t <- RMark::mark(data = inp_data_process1, 
-                       ddl = inp_design1, 
-                       model = "Pradlambda",
-                       model.parameters = model.parameters, output = F
+model.parameters = list(p = list(formula=~1 ),
+                        Phi = list(formula=~1 ), 
+                        pent = list(formula=~1 ))
+mPOPAN <- RMark::mark(data = inp_data_process1, 
+                  ddl = inp_design1, 
+                  model = "POPAN",
+                  model.parameters = model.parameters, output = F
 )
+combires <- list()
+combires$mPOPAN <- mPOPAN$results$derived$`Gross N* Population Size`
+combires$mPOPAN$AICc <- mPOPAN$results$AICc
 
+
+## 
 ```
+
+Abundance: 3ha 
 
 # Discussion
 Which Erebia species? 
@@ -324,7 +422,11 @@ Whats is the value of knowing the population size of a genus? Without knowing th
 
 Discussing if the population was open or closed
 
+Concepts to estiate the homerange.
+The population size and the exchange of individuals between populations is very different for different species [@Brussard]. @Brussard concluded that isolated meadows are not suitable for CMR-studies of species with *Erebia* *epipsodea*, even thought they are for other *Erebia* species.
 
+Comparing the result to that of distance sampling ... @Thomas1983. The results of @Shuey found out
+@Tulure found out that marking individuals is essential for estimating population size, but they propose a simplified MRR (Mark releas recapture) protocol, that reduces the effort but keeps the result almost as good.
 
 <!-- ## To do: -->
 <!-- - read mark book: for methods -->
