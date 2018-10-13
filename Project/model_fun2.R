@@ -127,6 +127,12 @@ mth_result <- model_fun(
   inp_data = inp_data, name = "mth"
 )
 
+mt_result <- model_fun(
+  "FullHet", 
+  formula = list(formula = ~1 + time , share = TRUE), 
+  inp_data = inp_data, name = "mth"
+)
+
 ## FullHet model with the weather and mixture:
 mwh_result <- model_fun(
   "FullHet", 

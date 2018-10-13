@@ -1,6 +1,6 @@
 ---
-title: "Capture Mark Recapture on Butterflies in the Stelvio National Parc"
-author: "Nele Stackelberg \n  Matrikelnummer: 3548205   \n -  \n Report of the TAOE-course, Msc. Environmental sciences  \n Lecturers: Severin Hauenstein and Luca Colatti"
+title: "The Capture-Mark-Recapture method to estimate the Population size of Butterflies in the Stelvio National Parc"
+author: "Nele Stackelberg  \n  Matrikelnr: 3548205   \n -  \n Report of the TAOE-course, Msc. Environmental sciences  \n Lecturers: Severin Hauenstein and Luca Corlatti"
 date: "Freiburg, 8 10 2018"
 output: 
   pdf_document:
@@ -15,8 +15,8 @@ header-includes:
   - \usepackage{placeins}
   - \setlength{\droptitle}{-60pt}
   - \pretitle{\center\LARGE\includegraphics[width=4cm, right]{Uni_Logo-Grundversion_E1_A4_CMYK.pdf} \vspace{50pt} \\ [\bigskipamount] }
-  - \posttitle{\vspace{10pt} \\ \vspace{5pt} }
-  - \predate{\includegraphics[width=12cm, center]{P1180817.JPG} \flushright\large\vspace{10pt}}
+  - \posttitle{\vspace{20pt} \\ \vspace{5pt} }
+  - \predate{\includegraphics[width=12cm, center]{stelvioCollage1.JPG} \flushright\large\vspace{20pt}}
   - \postdate{  \par }
 Extension: table_captions, tex_math_dollars
 bibliography: Lit.bib
@@ -33,29 +33,26 @@ knitr::opts_chunk$set(
 ```
 <!-- Titelbild mit kollage mit vielen Schmetterlingen und markierung -->
 # Introduction
-From the dynamics of the population of large mammals to that of protozoa, all are part of ecosystem processes. As these processes have an impact on our environment, they are of ecological interest. The response of population dynamics to the climate change strengthens the interest additionally [@climateEcol]. Knowing the size of a population is essential because it tells about the status of a species and is thus important to guide an effective conservation and management.
-
+From the dynamics of the population of large mammals to that of protozoa, all are part of ecosystem processes. As these processes have an impact on our environment, they are of ecological interest. The response of population dynamics to the climate change strengthens the interest additionally [@climateEcol]. Knowing the size of a population is essential because it tells about the status of a species and is thus important to guide an effective conservation and management.  
+In this study the population size of butterflies in the Stelvio National Parc located in the Italian Alps is estimated. In the mountains, the assessment of wildlife populations is a challenge, as mountains are generally a heterogeneous landscape and in some places hardly accessible.
+A quarter of the butterflies in Switzerland inhabit the altitudinal zone above 2000 m and it is species of the genus *Erebia*, that develop at the highest altitudes [@TagfalterLebensraum]. Butterflies in the alpine altitudinal zone have no more than one generation per year. But there are more butterflies that have a two-year development period than in lower altitudes, which means that the caterpillars hibernate twice [@TagfalterLebensraum]. The only butterfly that hibernates in the alpine zone is *Aglais urticae* (Small tortoiseshell), which was also seen once but not captured during the study.
  <!-- ecosystem processes, that have an impact on the natural environment, but might also influence the human environment such as agricultural sites. -->
 
-A common method to estimate population size is the capture mark recapture (CMR) analysis, also known as capture release recapture (CRR), in which, as the name suggests, animals are captured and marked. The proportion of marked individuals in a repeated capture session is the key to estimate various population parameters. Alternatively the abundance of species as an index of population dynamics can be determined by modified Pollard transects (MPT) [@Turlure] and distance sampling [@SchwarzSeber]. These methods are based on counting individuals without capuring them. Compared to CMR, MPT is less time-consuming an has less negative impact on individuals. The disadvandage of MPT, however, is that the population size cannot be estimated because the fraction of the unseen population that cannot be determined [@Turlure]. While the results of distance sampling correlate with those of the MPT-method, it was proposed by @shuey not to use them to estimate population size even after calibration with CMR data. 
+A common method to estimate population size is the capture mark recapture (CMR) analysis, also known as capture release recapture (CRR), in which, as the name suggests, animals are captured and marked. The proportion of marked individuals in a repeated capture session is the key to estimate various population parameters. Alternatively the abundance of species as an index of population dynamics can be determined by modified Pollard transects (MPT) [@Turlure] and distance sampling methods [@SchwarzSeber]. These methods are based on counting individuals without capturing them. Compared to CMR, MPT is less time-consuming an has less negative impact on individuals. The disadvantage of MPT, however, is that the population size cannot be estimated since the fraction of the unseen population cannot be determined neither [@Turlure].   
 As a modification of the CMR-method, for multiple captures of individuals during one session and few repetition sessions, the approach of non-invasive genetic sampling is increasingly used to estimate population size. This method is called Capwire [@miller; @pennell]. Further methods as the change-in-ratio method or catch-effort method are available to estimate population parameters by removing animals from the population [@SchwarzSeber].
 
-The CMR-method is widely used, but is based on various assumptions. A list of six Assumptions was published in @Lindberg: 
+The CMR-method is widely used, but is based on various assumptions. A list of six assumptions was published in @Lindberg: 
 
 > 1. marked individuals are representative of the population of interest and parameters estimated from the marked population can be inferred to the unmarked population;
 > 2. markers do not affect the behavior or fate of marked individuals;
 > 3. marks are not lost or misread;
-> 4. every marked animal alive in the population at time i has the same probability of capture;
+> 4. every marked animal alive in the population at time $i$ has the same probability of capture;
 > 5. the fate of each marked animal is independent of the fate of other marked animals; and
 > 6. re-sampling is instantaneous; that is, birth, death, immigration and emigration do not occur during the re-sampling process.
 
-Much effort has been done to develop models that are robust to violations of some of the assumptions. Models are grouped into the categories of open and closed models. Whether to use an open or closed model depends on the type of population. The basic assumption of a closed model is the closure, which means that during the period of the study no birth, death, immigration or emigration should occur in the population [@White S.3; @SchwarzSeber]. On the other hand, immigration and emigration occur in an open population. A closed model can only be used for an open population when imigration and emigration are completely random [@Lindberg]. And even for open models, the geographical closeness is still an assumption  [@White S.3].
+Much effort has been done to develop models that are robust to violations of some of the assumptions. Models are grouped into the categories of open and closed models. Whether to use an open or closed model depends on the type of population. The basic assumption of a closed model is the closure, which means that during the period of the study no birth, death, immigration or emigration should occur in the population [@White p.3; @SchwarzSeber]. On the other hand, immigration and emigration influence the dynamics of an open population. A closed model can only be used for an open population when immigration and emigration are completely random [@Lindberg]. And even for open models, the geographical closeness is still an assumption  [@White, p.3].
 
-
-
-<!-- POPAN or Pradlambda: "Capture-recapture models oriented to estimation of survival rates are the result of a recent change in emphasis from earlier approaches in which population size" @Lebreton -->
-In this study the population size of butterflies in the Stelvio National Parc located in the Italian Alps is estimated. In the mountains, the assessment of wildlife populations is a challenge, as mountains are generally a heterogeneous landscape and in some places hardly accessible. Therefore, the effort of the CMR method for butterflies and the value of its results are examined.
-It is checked to what extent closed or open CMR models are suitable and a comparison with the Capwire method is carried out.
+In this study, the effort of the CMR method for butterflies and the value of its results are examined. It is checked to what extent closed or open CMR models are suitable and a comparison with the Capwire method is carried out.
 
 <!-- @MARK : ‘encounter rate’) is the probability that -->
 <!-- given that the individual is alive and in the sample, that it is in fact encountered (e.g., seen). So ‘return rate’ = ‘survival rate’(fi) × ‘encounter rate’(p). It is difficult to compare return rates, since differences (or lack thereof) could reflect differences or similarities in the 2 underlying probabilities (survival rate, and encounter rate). -->
@@ -64,41 +61,39 @@ It is checked to what extent closed or open CMR models are suitable and a compar
 
 ## Sampling
 <!-- Study design - Study area - The capturing and marking of the butterflies -->
-The sampling took place from August 21.-28. 2018 on a mountain meadow close to the bivacco valzeroten at $2200 m.a.s.$ which is situated in the Val Canè, Lombardy, Italy (see figure \ref{area}). The study site was chosen on the first day of capture because it is a homogeneous and undisturbed meadow. Furthermore it was obvious that the meadow is a habitat of butterflies, because at first sight many butterflies flew around.
+The sampling took place from August 21.-28. 2018 on a mountain meadow close to the Bivacco Valzeroten at $2200\  m.a.s.$ which is located in the Val Canè, Lombardy, Italy (see figure \ref{area}). The study site was chosen on the first day of capture because it is a homogeneous and undisturbed meadow. Furthermore it was obvious that the meadow is a habitat of butterflies, because at first sight many butterflies flew around.
 
-![The study site in the Val Canè, which is part of the Stelvio National Park. The Area of thes study site is about 3ha, it is exposed to South-West an at 2200 m.a.s of altitude. \label{area}](../Project/area.pdf)
+![The study site in the Val Canè, which is part of the Stelvio National Park. The area of this study site is about 3ha, it is exposed to South-West and at 2200 m.a.s of altitude. The map was created by Elisa Schneider. \label{area}](../Project/area.pdf)
 
-One sampling session was conducted by the three of us (Marvin, Elisa, Nele) every day. We catched the butterflies with two nets, while walking across the study site in a zigzag. Meanwhile two of us tried to catch every butterfly that was flying within range or was sitting in the grass. The latter was frequently the case in cloudy or even rainy weather. The third person would always mark the butterflies, note the details of the catch, such as the number and color of marker and take a picture of the butterfly. The picture was suitable to identify later recaptured butterflies, even if the marking was not clearly recognizable.The butterflies were marked by writing a consecutive number on their outer wing with a permanent marker. The permanent marker was used in the expectation that the Butterflies do not lose their marks during the experiment. Together with the fact that the marks are noted correctly at each sampling occasion this is an important assumption of the CMR-Method [@White S. 7].
-The sampling was usually started between half past ten and eleven o'clock, because this was the time when the butterflies started to fly. The duration of a session was about three hours, depending on how many butterflies were caught and marked. A second session on the same day was not possible because the butterflies decreasingly flew in the afternoon.
+One sampling session was conducted every day by the three of us (Marvin Plein, Elisa Schneider, Nele Stackelberg). The sampling was usually started between half past ten and eleven o'clock, because this was the time when the butterflies started to fly. The duration of a session was about three hours, depending on how many butterflies were caught and marked. A second session on the same day was not possible because the butterflies decreasingly flew in the afternoon.  
+We caught the butterflies with two nets, while walking across the study site in a zigzag. Meanwhile two of us tried to catch every butterfly that was flying within range or was sitting in the grass. The latter was frequently the case in cloudy or even rainy weather. The third person would always mark the butterflies, note the details of the catch, such as the number and color of marker and take a picture of the butterfly. The butterflies were marked by writing a consecutive number on their outer wing with a permanent marker. 
 
 ## Data Analysis
 The information of the captures were written in a binary table where the ones represent the captures or recaptures. Each column of this table represents one session, the rows represent the individuals. To model the population size we used the software *R* [@R] and the package *RMark* [@RMark], which is an interface to the software *MARK* [@MARK].
 
 With this software it is possible to run different models to estimate the population size. The models differ in their assumptions about the environment and ecology of the species studied as well as the possible influence of the one carrying out the study. The Program uses the method of maximum likelihood estimation to determine a probability of capture and recapture and then determines the population size from it. <!-- ?? richtig beschrieben -->
-First some "Closed Models" are run.
-The Model $M_0$ is the simplest model, which models constant capture and recapture probabilities. The probabilities might also be varying form session to session, which is implemented in the model $M_t$ and $M_T$. These models implement continuous (capital T) and factorial (lowercase t) time dependence of the capture probabilities. An improving ability to catch butterflies from session to session would promote, for example, the use of Model $M_T$. The variation of the probabilities with the different sessions might also depend on the weather. Therefore the model $M_w$ is calculated with the weather as predictor. The variable weather was subjectively recorded with a value between 0 and 1 after each session. The value 1 means continuous sunshine and the value 0 continuous cloudy. No sampling was done during rain. Another possible source to variation of the detection probabilities is trap-shyness or trap-happiness. This behavioral response is part of the model $M_b$, which calculates capture probabilities that are either greater or less than recapture probabilities. 
-In the following these models ($M_t$, $M_T$, $M_w$, $M_b$) are compared and Models that combine the factors are run. 
-Models dealing with individual heterogeneity will not be considered as no differences between individuals are recorded.
+First some "Closed Models" were run.  
+The Model $M_0$ is the simplest model, which models constant capture and recapture probabilities. The probabilities might also be varying form session to session, which was implemented in the model $M_t$ and $M_T$. These models implement continuous (capital T) and factorial (lowercase t) time dependence of the capture probabilities. An improving ability to catch butterflies from session to session would promote, for example, the use of Model $M_T$. The variation of the probabilities with the different sessions might also depend on the weather. Therefore the model $M_w$ was calculated with the weather as predictor. The variable weather was subjectively recorded with a value between 0 and 1 after each session. The value 1 means continuous sunshine and the value 0 continuous cloudy. No sampling was done during rain. Another possible source to variation of the detection probabilities is trap-shyness or trap-happiness. This behavioral response is part of the model $M_b$, which calculates capture probabilities that are either greater or less than recapture probabilities.   
+In the following these models ($M_t$, $M_T$, $M_w$, $M_b$) were compared.
+Models dealing with individual heterogeneity were not considered as no differences between individuals were recorded.
 <!-- example for M_t -->
 <!-- Modell Mw, Mb beschreiben -->
 
-Since we don't have any information about movements or death or birth during the study period, the assumption of a closed population cannot be confirmed in this experiment. Therefore some open population models are also run, where model types as $M_0$ and $M_t$ can also be implemented. To estimate the super-population (all animals that ever entered the study site) as well as the population size that is on the patch on every session, models of the type POPAN are run. POPAN stands for POPulation ANalysis and is named after the software of the same name. The POPAN model is a modified parameterizantion of the Jolly-Seber model [@MARK]. It is based on the assumption that marked and unmarked individuals are equally catchable [@MARK]. 
-This model not only estimates the population size, but also the migration or death and immigration or birth for every session. Additional parameters of these models are the survival probability $\Phi$ (where emigration is included because it is indistinguishable) and the probability that an animal would enter the population  $pent$ (where birth is included) from one session to the next. 
-The first open model that is calculated, "Popan_M_0" is a Popan-model of type $M_0$, where all three parameters, $p$, $\Phi$ and $pent$ are constant. 
-The Popan model makes it possible to test the assumption of the open population by modelling a fixed survival probability of $1$ and a fixed probability of entrance of $0$. In this way the population without birth or death (respectively imigration or emigration) is simulated, and the model can be compared to "real" open models via the AICc. This is the second model "Popan_phi+pent_fixed" with $pent = 0$ (no entrance or birth) and $\Phi = 1$ (all individuals survive) which is calculated.
-Furthermore the open models "Popan_p_time-dependent", "Popan_p+phi_time-dependent" and "Popan_p+phi+pent_time-dependent" are calculated where either the capture probability is time dependent or the two other parameters are also time dependent.
+Since we didn't have any information about movements or death or birth during the study period, the assumption of a closed population couldn't be confirmed in this experiment. Therefore some open population models were also run, where model types as $M_0$ and $M_t$ were also be implemented. To estimate the super-population (all individuals that ever entered the study site) as well as the population size that is on the patch on every session, models of the type POPAN were run. POPAN stands for POPulation ANalysis and is named after the software of the same name. The POPAN model is a modified parameterization of the Jolly-Seber model [@MARK]. It is based on the assumption that marked and unmarked individuals are equally catchable [@MARK].   
+This model not only estimates the population size, but also the migration or death and immigration or birth for every session. Additional parameters of these models are the survival probability $\Phi$ (where emigration is included because it is indistinguishable) and the probability that an individual would enter the population  $pent$ (where birth is included) from one session to the next.   
+The first open model that was calculated, "Popan_M_0" is a Popan-model of type $M_0$, where all three parameters, $p$, $\Phi$ and $pent$ are constant.   
+The Popan model makes it possible to test the assumption of the open population by modelling a fixed survival probability of $1$ and a fixed probability of entrance of $0$. In this way the population without birth or death (respectively immigration or emigration) was simulated, and the model could be compared to "real" open models by the AICc. This is the second model "Popan_phi+pent_fixed" with $pent = 0$ (no entrance or birth) and $\Phi = 1$ (all individuals survive) which was calculated.  
+Furthermore the open models "Popan_p_time-dependent", "Popan_p+phi_time-dependent" and "Popan_p+phi+pent_time-dependent" were calculated where either the capture probability is time dependent or the two other parameters are also time dependent.
 
 <!-- Comparison of the models -->
+Finally a Capwire model was fitted with the R-package of the same name [@capwire]. Therefore the information of all captures was summarized in capture classes, meaning that individuals in class $i$ were captured $i$ times. This data then also contained the information of individuals who were caught several times during a session. But the information of the differences of captures and recaptures between the sessions were no longer included. To models were run: the Equal Capture Model (ECM) and the Two Innate-Rates Model (TIRM). While the ECM is based on the assumption that all individuals have an equal probability of being captured, the TIRM assumes that there is indivudual based heterogeneity in the probability of capture and calculates a mixture of two groups of individuals with distinct capture probabilities [@pennell]. The results of both models were compared with a likelihood ratio test (LRT).
 
-the capwire model, first the data is wragled, than capwire in R is used.
 <!-- is the capwire open or closed ? -->
 
 <!-- Estimating the Population size and maybe the Population density -->
 
 # Results
-In total 402 individual butterflies were marked during the 8 days of capture. They were almost exclusively butterflies of the genus **Erebia**. A more precise determination at species level was not possible due to a lack of literature and the additional time which the determination would have taken. The few butterflies which were not of the genus **Erebia** were of the genus **Boloria** and one captured butterfly was identified as a **Aglais io** (European peacock).
-
-A quarter of the butterflies in Switzerland inhabit the altitudinal zone above 2000 m and it is species of the genus **Erebia**, that develop at the highest altitudes [@TagfalterLebensraum]. Butterflies in the alpine altitudinal zone have no more than one generation per year. But there are more butterflies that have a two-year development period than in lower altitudes, which means that the caterpillars hibernate twice [@TagfalterLebensraum]. The only butterfly that hibernates in the alpine zone is **Aglais urticae** (Small tortoiseshell), which was also seen once but not captured during the study.
+In total 402 butterflies were marked during the 8 days of capture. They were almost exclusively butterflies of the genus *Erebia*. A more precise determination at species level was not possible due to a lack of expertise as well as the additional time which the determination would have taken. The few butterflies which were not of the genus *Erebia* were of the genus *Boloria* and one captured butterfly was identified as a *Aglais io* (European peacock).
 
 During data acquisition we made 83 recaptures of 64 individuals, which means that some of them have also been recaptured several times. Recapture rates were low at the beginning and reached rates of above 10 % up from the fifth session. The amount of captures and recaptures of the sessions is represented in figure \ref{recaptures}. The figure also shows that butterflies of every session were recaptured throughout the following sessions. Butterflies marked on the first day were recaptured on every following session except for the second session.
 
@@ -160,7 +155,7 @@ ggplot(recaptures) +
   guides(fill=guide_legend(title="First captured")) + theme_bw()
 ```
 
-The results of the simple Closed models are shown in table \ref{closed}.  The model $M_w$ describes best the data (lowest AICc) and estimates a population-size of 1600 individuals. 
+The results of the simple Closed models are shown in table \ref{closed}.  The model $M_w$ describes best the data (lowest AICc) and estimates a population-size of 1601 individuals with a 95% confidence interval from 1268 to 2064 individuals. The model $M_t$ returns a very similar result. This shows that the model randomly selects values for the time as factorial predictor that are very similar to the variable describing the weather.
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 ## wragle data: ------------
 raw_data_2 <- raw_data %>% 
@@ -224,6 +219,10 @@ names(restab) <- names(res$m0)
 restab$model <- names(res)
 restab <- select(restab, model, AICc, estimate, lcl, ucl) %>% 
   arrange(AICc)
+restab$AICc <- round(restab$AICc,1)
+restab$estimate <- round(restab$estimate, 0)
+restab$lcl <- round(restab$lcl, 0)
+restab$ucl <- round(restab$ucl, 0)
 kableExtra::kable(restab, 'latex', booktabs =T,
              caption = "The results of the simple Closed models M0 (constant detection probabilities), Mt (factorial time-dependence), MT (continuous time-dependence), Mb (behavioural response) and Mw (weather-dependence). The table contains the AICc to evaluate the models, the estimate of the population size and the lower (lcI) and upper (ucI) confidence intervals. \\label{closed}") %>%
   kableExtra::kable_styling(latex_options = "striped")
@@ -241,67 +240,67 @@ inp_design1 <- RMark::make.design.data(inp_data_process1)
 model.parameters = list(p = list(formula=~1 ),
                         Phi = list(formula=~1 ), 
                         pent = list(formula=~1 ))
-mPOPAN <- RMark::mark(data = inp_data_process1, 
+POPAN_m0 <- RMark::mark(data = inp_data_process1, 
                   ddl = inp_design1, 
                   model = "POPAN",
                   model.parameters = model.parameters, output = F
 )
 openres <- list()
-openres$mPOPAN <- mPOPAN$results$derived$`Gross N* Population Size`
-openres$mPOPAN$AICc <- mPOPAN$results$AICc
+openres$POPAN_m0 <- POPAN_m0$results$derived$`Gross N* Population Size`
+openres$POPAN_m0$AICc <- POPAN_m0$results$AICc
 ## 
 #The second is fixed which allows real parameters to be set at fixed values. 
 # fixed survival probability
 model.parameters = list(p = list(formula=~1 ),
                         Phi = list(formula=~1 , fixed=1), # survival probability
                         pent = list(formula=~1, fixed=0 )) # probability of entrance
-mPOPANclosed <- RMark::mark(data = inp_data_process1, 
+POPAN_phi_pent_fix <- RMark::mark(data = inp_data_process1, 
                       ddl = inp_design1, 
                       model = "POPAN",
                       model.parameters = model.parameters, output = F
 )
-openres$mPOPANclosed <- mPOPANclosed$results$derived$`Gross N* Population Size`
-openres$mPOPANclosed$AICc <- mPOPANclosed$results$AICc
+openres$POPAN_phi_pent_fix <- POPAN_phi_pent_fix$results$derived$`Gross N* Population Size`
+openres$POPAN_phi_pent_fix$AICc <- POPAN_phi_pent_fix$results$AICc
 
 ## open with time
 model.parameters = list(p = list(formula=~1 + time ),
                         Phi = list(formula=~1), #probability of survival
                         pent = list(formula=~1)) # probability of entrance
-mPOPANt <- RMark::mark(data = inp_data_process1, 
+POPAN_p_time <- RMark::mark(data = inp_data_process1, 
                        ddl = inp_design1, 
                        model = "POPAN",
                        model.parameters = model.parameters, output = F
 )
-openres$mPOPANt <- mPOPANt$results$derived$`Gross N* Population Size`
-openres$mPOPANt$AICc <- mPOPANt$results$AICc
+openres$POPAN_p_time <- POPAN_p_time$results$derived$`Gross N* Population Size`
+openres$POPAN_p_time$AICc <- POPAN_p_time$results$AICc
 
 model.parameters = list(p = list(formula=~1 + time ),
                         Phi = list(formula=~1 + time), #probability of survival
                         pent = list(formula=~1)) # probability of entrance
-mPOPANtt <- RMark::mark(data = inp_data_process1, 
+POPAN_p_phi_time <- RMark::mark(data = inp_data_process1, 
                        ddl = inp_design1, 
                        model = "POPAN",
                        model.parameters = model.parameters, output = F
 )
-openres$mPOPANtt <- mPOPANtt$results$derived$`Gross N* Population Size`
-openres$mPOPANtt$AICc <- mPOPANtt$results$AICc
+openres$POPAN_p_phi_time <- POPAN_p_phi_time$results$derived$`Gross N* Population Size`
+openres$POPAN_p_phi_time$AICc <- POPAN_p_phi_time$results$AICc
 
 model.parameters = list(p = list(formula=~1 + time ),
                         Phi = list(formula=~1 + time), #probability of survival
                         pent = list(formula=~1 + time)) # probability of entrance
-mPOPANttt <- RMark::mark(data = inp_data_process1, 
+POPAN_p_phi_pent_time <- RMark::mark(data = inp_data_process1, 
                        ddl = inp_design1, 
                        model = "POPAN",
                        model.parameters = model.parameters, output = F
 )
-openres$mPOPANttt <- mPOPANttt$results$derived$`Gross N* Population Size`
-openres$mPOPANttt$AICc <- mPOPANttt$results$AICc
+openres$POPAN_p_phi_pent_time <- POPAN_p_phi_pent_time$results$derived$`Gross N* Population Size`
+openres$POPAN_p_phi_pent_time$AICc <- POPAN_p_phi_pent_time$results$AICc
 ```
 
-The test for closeness of the population shows that the Population is open as the Popan-model that simulates the closed population, "Popan_phi+pent_fixed",  has the highest AICc value (`r mPOPANclosed$results$AICc`). The Popan-$M_0$ model, "Popan_M_0", has an AICc of `r mPOPAN$results$AICc` and the Model, "Popan_p_time-dependent", where the capture probability is time dependent and the two other parameters are constant has an AICc of `r mPOPANt$results$AICc`, which is the lowest value and therefore considered as the model that estimates best the population size. The models where either the survival probability or the probability of entrance are also time-dependent doesn't fit as good. 
+As a first result of the Popan model, the test for closeness of the population shows that the Population is open. The Popan-model that simulates the closed population, "Popan_phi+pent_fixed",  has the highest AICc value (`r round(POPAN_phi_pent_fix$results$AICc, 2)`). The Popan-$M_0$ model, "Popan_M_0", has an AICc of `r round(POPAN_m0$results$AICc, 2)`. The Model, "Popan_p_time-dependent", where the capture probability is time dependent and the two other parameters are constant, has an AICc of `r round(POPAN_p_time$results$AICc,2)`, which is the lowest value. Therefore this model is considered as the model that estimates best the population size (see figure \ref{Popan}). Its estimate for the superpopulation size is 2159 individuals. The models where either the survival probability or the probability of entrance are also time-dependent don't fit as good. 
 <!-- This is reasonable as the two parameters are constant ecologically -->
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height = 3}
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height = 3, fig.cap="The estimates for the size of the superpopulation and their confidence interval of the calculated Popan-models. The superpopulation describes all the butterflies that had been at the study site anytime during the period of the study. The AICc is displayed by the color of the bars. The model with time-dependent capture probability p has the lowes AICc and is therefore considered to have the best fit of the data. It estimates a superpopulation-size of about 2159 individuals. \\label{Popan}"}
 # ## mPopan weather ## mLogit link (?markBook S. 483)
 # inp_design1$p$weather <- c(0.5, .3, .2, .8, .4, .9, 1, 1)
 # inp_design1$c$weather <- c( .3, .2, .8, .4, .9, 1, 1)
@@ -317,23 +316,29 @@ The test for closeness of the population shows that the Population is open as th
 # openres$mPOPANw <- mPOPANw$results$derived$`Gross N* Population Size`
 
 opentab <- data.frame(matrix(unlist(openres), nrow=length(openres), byrow=T))
-names(opentab) <- names(openres$mPOPAN)
+names(opentab) <- names(openres$POPAN_m0)
 opentab$model <- names(openres)
 
 lontab <- tidyr::gather(opentab, key, superpopulation_size, -AICc, -model)
+lontab$AICc <- as.factor(round(lontab$AICc, 2))
+lontab$model <- substring(lontab$model, 7, 22)
 ggplot(lontab, aes(model, superpopulation_size)) + 
-  geom_boxplot(aes(fill = AICc)) + theme_bw()
+  geom_boxplot(aes(fill = AICc)) + theme_bw() + xlab("Popan-model")
 ```
 
+The model "Popan_p_time" returns also estimates for the Population size that was on the study site during every session. The values of the population size just under 1000 individuals are relatively constant over the period and therefore plausible (see figure \ref{Popan2}). The confidence interval of both the superpopulation size estimate and the population size for every session are high, with a range from 1600 to 2913 for the superpopulation and from about 500 to 1850 on average for the population size of the unique sessions.
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height = 3}
+From the average population size of about 960 individuals, this model could now be used to deduce the abundance of butterflies on the three hectare area. That would be 320 butterflies per hectare - with a high degree of uncertainty.
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height = 3, fig.cap="The estimated Population size of the Popan-model with time-dependent capture probability ('Popan_p_time') for ever session is constantly of a size about 1000 individuals. The confidence interval of the estimated value is on average 1334 individuals and therefore a big range. \\label{Popan2}"}
 Popsize <- list()
-Popsize$mPOPAN <- mPOPAN$results$derived$`N Population Size`
-Popsize$mPOPAN$model <- "mPOPAN"
-Popsize$mPOPANt <- mPOPANt$results$derived$`N Population Size`
-Popsize$mPOPANt$model <- "mPOPANt"
+Popsize$POPAN_m0 <- POPAN_m0$results$derived$`N Population Size`
+Popsize$POPAN_m0$model <- "POPAN_m0"
+Popsize$POPAN_p_time <- POPAN_p_time$results$derived$`N Population Size`
+Popsize$POPAN_p_time$model <- "POPAN_p_time"
 
-poptab <- Popsize$mPOPANt
+poptab <- Popsize$POPAN_p_time
 poptab$session <- as.character(1:8)
 poptab1 <- tidyr::gather(poptab, key, Population_size, -model, -session)
 
@@ -343,85 +348,62 @@ ggplot(poptab1, aes(x=session, y=Population_size)) +
 ```
 
 
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
+library(capwire)
 
-```{r combidata, echo=FALSE, message=FALSE, warning=FALSE}
-combidata <- raw_data %>% 
-  transmute(id = id, 
-            s1 = s1 + s2,
-            s2 = s3 + s4,
-            s3 = s5 + s6 + s7 + s8) %>% 
-  mutate_at(
-    vars(grep("s",colnames(.))), 
-    .funs = funs(ifelse(. >1, 1, .))
-  ) %>% 
-  mutate(ch = paste0(!!!.[,grep("s",colnames(.))])) %>% 
-  select(ch) %>% 
-  mutate(freq = 1)
+rawdata <- read.csv("Project/raw_data_8.csv")
+catches <- data.frame(catch = rowSums(rawdata[,2:9]))
+catches <- catches %>% 
+  count(catch)
+catches$catch <- as.integer(catches$catch)
+catch <- as.data.frame(catches)
 
-inp_data_process1 <- process.data(combidata, model = "POPAN")
-inp_design1 <- RMark::make.design.data(inp_data_process1)
+res.ecm1 <- fitEcm(data= catch, max.pop=5000)
+## 1248 population size
 
-# inp_design1$p$predictor <- predictor
-# inp_design1$c$predictor <- predictor[2:length(predictor)]
+res.tirm1 <- fitTirm(data= catch, max.pop=5000)
 
-model.parameters = list(p = list(formula=~1 ),
-                        Phi = list(formula=~1 ), 
-                        pent = list(formula=~1 ))
-mPOPAN <- RMark::mark(data = inp_data_process1, 
-                  ddl = inp_design1, 
-                  model = "POPAN",
-                  model.parameters = model.parameters, output = F
-)
-combires <- list()
-combires$mPOPAN <- mPOPAN$results$derived$`Gross N* Population Size`
-combires$mPOPAN$AICc <- mPOPAN$results$AICc
+lik.ratio1 <- lrtCapwire(ecm=res.ecm1, tirm=res.tirm1, bootstraps=10)
 
+boot.ecm <- bootstrapCapwire(x=res.ecm1, bootstraps=10, CI=c(0.025, 0.975))
 
-## 
+boot.tirm <- bootstrapCapwire(x=res.tirm1, bootstraps=10, CI=c(0.025, 0.975))
+boot.tirm
 ```
 
-Abundance: 3ha 
+Finally the Capwire analysis also shows a result.
+The likelihood ratio test shows that the Two Innate-Rates Model (TIRM) fit the data better than the Equal Capture Model (ECM). The TIRM predicts a population size of 1578 individuals with the confidence interval (2.5% to 97.5%) from 1514 to 1918 Individuals.
 
 # Discussion
+<!-- open your Discussion by restating the question addressed by your experiment -->
+By marking and recapturing butterflies on eight consecutive days the population size could be determined with different models. The result of the Capwire model (software Capwire) is similar to the result of the closed model (software mark) with the best fit and estimate a population size of about 1600 individuals. However with the software mark it was determined that the data rather represent an open population, with a superpopulation size of about 2200 Individuals. This is a rather uncertain estimate as the confidence interval covers a range of 1000 individuals.
 
-Does the assumptions fit?
+Since we had little knowledge on the ecology of the butterflies and did not collect further environmental parameters to gain information about the habitat, judging the assumptions of the models and the value of the result is difficult. So we must assume without deeper knowledge, that the first assumption, that marked individual are representative of the population of interest, is true. The population of our interest is, if not only of order Lepidoptera, that of a genus. The value of knowing the population size of a genus is doubtful.
+What is the statement of this study where the species are not known? @Lindberg for example, proposed to include at minimum the information of gender and age of marked individuals to CMR designs. It wasn't within the scope of the study to determine the sex of the butterflies, therefore its effect on the recapture probability could not be investigated. Neither did other individual differences.  
+Regarding the second assumption, that the mark must not affect the butterfly, there is following dilemma: Butterflies marked with a thick white marker could sometimes be recognized without being taken out of the net by hand a second time (the recapture) while this was always necessary for the small black marks. Looking at the butterfly grabbing it by hand carries the risk of hurting it. On the other hand, a large white mark on the butterfly changes its appearance even in flight. This could affect the risk of being seen by predators. Although @Morton couldn't show any significant differences between color or size of marks in their experiment on butterflies, this should be assessed with more ecological field experience and observations specific to environment and situation.  
+Since butterflies marked on the first day were recaptured on the last day, the third assumption that marks are not lost seems plausible. It was also ensured by photos of each marked butterfly that recaptures were not misread, even if meanwhile parts of wings were damaged and the marking was not clearly recognizable.  
+No observations were made pointing to violations of assumptions three to six concerning the capture probability of individuals, their independent fate and non-existent population dynamics during the sessions. To confirm these assumptions, however, further knowledge about the ecology of the ecosystem is needed.
 
+<!-- @Lindberg:  Observer or encounter characteristics, for example experience level, handling time for marking, and length of the encounter occasion, may also cause assumption (3–6) violations and should be recorded. -->
 
-<!-- In the Stelvio national parc 20 species: Erebia aethiops, Erebia albergana, Erebia cassioides, Erebia epiphron, Erebia eriphyle, Erebia euryale, Erebia ligea, Erebia manto, Erebia medusa, Erebia gorge, Erebia melampus, Erebia mnestra, Erebia montana, Erebia pandrose, Erebia styx, Erebia pharte, Erebia triaria, Erebia pluto, Erebia pronoe, Erebia tyndarus (@Bonifacino).  -->
+According to the test of the models with the software mark, the data is described better under the assumption of an open population. This is also what @White describes, namely that the conditions in the field don't necessarily have to be different to use open models, but that the population size changes fast relative to the period of the study. They even state "In many insect capture studies, open models are necessary even when capture occasions are on consecutive days" [@White, p.180].
+This shows that the open models are better suited for estimating butterfly populations than closed models or the Capwire model - although closed models and Capwire provide similar results and have a simpler structure.  
+But also in this case the question of the species arises as the population size and the exchange of individuals between populations is very different for different species [@Brussard]. For example @Brussard concluded that isolated meadows are not suitable for CMR-studies of species with *Erebia* *epipsodea*, even thought they are for other *Erebia* species.
 
-There is a dilemma regarding the second assumption, since the size of the mark must not affect the butterfly: Butterflies marked with the thick white marker could often be recognized without being taken out of the net by hand, which was always a danger to injure the butterfly. (weiteres Vergleichen mit @Morton. @Morton couldn't show any significant differences between color or size of marks on the butterflies. They might only be affected by the capture...)
+It should also be noted that some of the closed models have achieved unrealistic results. These problems might be caused during computations by the small number of recaptures. This means it is due to the nature of our data that for example the model that simulates behavioural response estimates an unrealistically high population size.
+Furthermore the Popan model was only calculated with the factorial time dependence and not with the weather due to some software issues. I didn't find out if it was the software itself, the version or the code that I didn't get the models to work.  
+Of course, further effort can now be put into the analysis of other models. For example the combination of open and closed models could be calculated. This would be plausible if the population dynamics were only influenced by large rainfalls as an example between session 2 and 3 and between session 4 and 5 and otherwise behaved as a closed population.  
+However, the effort required for these additional models is questionable, as the random nature of the data means that the results are very uncertain.  
+To get more precise results, more data needs to be collected. The necessary effort to achieve sufficiently precise results depends on the size of the population. @Thomas1983 has also shown for big populations that "the technique of transect recording (Pollard's transects) provides adequate basis for assessing a butterfly's status and needs" and is even more accurate for very large butterfly populations.
+This contradicts the findings of @Turlure, that marking individuals is essential for estimating population size. @Turlure therefore propose a simplified MRR (Mark release recapture) protocol, that reduces the effort of sampling but keeps the result almost as good.  @shuey, too, had not obtained correlating results when comparing the two methods with Mitchell's satyr Butterfly populations, and is considering CMR as the method to choose.  
+Probably the method by which the population size can best be estimated depends on the species and the environment. 
 
-Which Erebia species? 
-Effect of Sex on recapture probability could not be investigated... other individual differences?
+<!-- and Models that combine the factors were run.  -->
 
-Whats is the value of knowing the population size of a genus? Without knowing the species, such a study is without clear statement.
-@Lindberg: Therefore, at minimum and when possible, CMR designs should include information on gender and age of marked individuals. Observer or encounter characteristics, for example experience level, handling time for marking, and length of the encounter occasion, may also cause assumption (3–6) violations and should be recorded.
+<!-- While the results of distance sampling correlate with those of the MPT-method, it was proposed by @shuey not to use them to estimate population size even after calibration with CMR data. -->
+<!-- general discussion -->
+<!-- Concepts to estiate the homerange. -->
 
-Discussing if the population was open or closed
-
-Concepts to estiate the homerange.
-The population size and the exchange of individuals between populations is very different for different species [@Brussard]. @Brussard concluded that isolated meadows are not suitable for CMR-studies of species with *Erebia* *epipsodea*, even thought they are for other *Erebia* species.
-
-Comparing the result to that of distance sampling ... @Thomas1983. The results of @shuey found out
-@Turlure found out that marking individuals is essential for estimating population size, but they propose a simplified MRR (Mark releas recapture) protocol, that reduces the effort but keeps the result almost as good.
-
-
-What might improve the models? Combination of open and closed model - open only between rain events?
-
-"Field aspects of capture-recapture studies are not necessarily different when open models are used, except that the time period may be long relative to the population dynamics of the target species. ... In many insect capture studies, open models are necessary even when capture occasions are on consecutive days."  [@White S.180].
-
-<!-- ## To do: -->
-<!-- - read mark book: for methods -->
-<!-- - read white et al: for methods -->
-<!-- - programm a few more models -->
-<!--     - partly open model (4 and 4 days of closure, open in between?) -->
-<!-- - read lindberg for discussion -->
-<!-- - read butterflies articles for introduction and discussion -->
-
-<!-- ## questions: -->
-<!-- - where in the report should I write the assumptions of CMR, the method and of the models? -->
-<!-- - what does the "share = T" mean? -->
-<!-- - why is the mtb model weird? -->
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 junk <- dir(path = "../Project/", pattern=".tmp")
 file.remove(paste0("../Project/",junk))
